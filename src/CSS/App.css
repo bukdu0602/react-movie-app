@@ -1,0 +1,104 @@
+@charset "utf-8";
+
+/* Resets */
+
+/* Box Sizing Reset */
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+/* Img reset */
+img {
+    max-width: 100%;
+    height: auto;
+}
+/* page body setting */
+p {
+    line-height: 1.4;
+    font-size: 1.2em;
+}
+body {
+    margin: 0;
+    font-family: 'Lato', sans-serif;
+    background-color: #2c2626;
+}
+.wrapper {
+    max-width: 1000px;
+    min-height: 100vh;
+    background-color: rgb(190, 177, 177);
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    margin: 0 auto;
+}
+
+.top-bar {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    grid-template-rows: 50px auto;
+    grid-template-areas: "logo btn"
+                         "nav  nav";
+    align-items: center;
+    background-color: rgb(0, 0, 0);
+}
+.top-bar h1 {
+    grid-area: logo;
+    margin: 0;
+    margin-left: 20px;
+}
+.btn-menu {
+    grid-area: btn;
+    justify-self: end;
+    margin-right: 20px;
+    font-weight: bold;
+}
+
+.top-bar nav {
+    grid-area: nav;
+    display: none;
+}
+
+header a {
+    text-decoration: none;
+    color: white;
+}
+
+.show .top-bar nav {
+    display: block;
+}
+
+.top-bar ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-align: center;
+}
+
+.top-bar nav a {
+    padding-left: 20px;
+    line-height: 50px;
+    font-size: 1.2em;
+    display: block;
+    transition: background-color 0.5s ease;
+}
+.top-bar nav a:hover,
+.top-bar nav a:active,
+.top-bar nav a:focus {
+    background-color: rgba(255,255,255, 0.3);
+}
+
+/* movie cards */
+.card {
+    display: flex;
+    margin: 10px;
+    justify-content: space-around;
+    align-items: center;
+    padding: 30px;
+    background-color: rgb(128, 151, 43);
+}
+.posterImage {
+    max-width: 300px;
+}
+.movieInfo {
+    max-width: 300px;
+}
