@@ -2,14 +2,17 @@ import React, {useState, useEffect} from "react";
 import { API_TOKEN } from '../globals/globals';
 import { NavLink } from 'react-router-dom';
 
-const PageHome = () => {
+
+
+const PageHome = ({ sort }) => {
     
     const [moviesData, setMoviesData] = useState(null);
+    const [sorting, setSorting] = useState('popular');
 
     useEffect(() => {
 
         const fetchMovies = async () => {
-            const res = await fetch(`https://api.themoviedb.org/3/movie/popular?language=en-US&page=1`, {
+            const res = await fetch(`https://api.themoviedb.org/3/movie/${sort}?language=en-US&page=1`, {
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
@@ -23,10 +26,41 @@ const PageHome = () => {
       
           fetchMovies();
 
-    }, []);
+    }, [sort]);
+
+    function gotClicked(e){
+        e.preventDefault();
+        console.log("jiji")
+        const item = e.target.elements.myList.value
+        console.log(item)
+        setSorting(item)
+    }
 
     return (
         <section className="home-page">
+
+        <form action='/' onSubmit={gotClicked}>
+            <label htmlFor="myList">Sort</label>
+            <select id="myList" name="myList">
+                <option value="">Select</option>
+                <option value="/sort/popular">Popular</option>
+                <option value="/sort/top-rated">Top Rated</option>
+                <option value="/sort/now-playing">Now Playing</option>
+                <option value="/sort/upcoming">Upcoming</option>
+            </select>
+            <button type="submit">submit</button>
+
+        </form>
+        
+        
+        <nav className="nav-sort">
+            <ul>
+                <li>
+                    <NavLink to={sorting}>bbbbbbb</NavLink>
+                </li>
+                
+            </ul>
+        </nav>
             {moviesData !== null && 
                 moviesData.map(movie =>
                     <div className="card">

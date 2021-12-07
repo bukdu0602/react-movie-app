@@ -14,7 +14,11 @@ function App() {
     <div className="wrapper">
       <Header />
       <Routes>
-              <Route path="/" element={<PageHome />} />
+              <Route path="/" element={<PageHome sort='popular'/>} />
+              <Route path='/sort/popular' element={<PageHome sort='popular'/>} />
+              <Route path='/sort/top-rated' element={<PageHome sort='top_rated'/>} />
+              <Route path='/sort/now-playing' element={<PageHome sort='now_playing'/>} />
+              <Route path='/sort/upcoming' element={<PageHome sort='upcoming'/>} />
               <Route path="/favorite" element={<PageFavorite />} />
               <Route path="/about" element={<PageAbout />} />
               <Route path="/individual/:id" element={<PageIndividual />} />

@@ -89,16 +89,19 @@ header a {
 
 /* movie cards */
 .card {
-    display: flex;
     margin: 10px;
-    justify-content: space-around;
+    /* display: flex; */
+    /* justify-content: space-around; */
+    
     align-items: center;
     padding: 30px;
     background-color: rgb(128, 151, 43);
 }
 .posterImage {
-    max-width: 300px;
+    margin: 0 auto;
+    max-width: 400px;
 }
 .movieInfo {
-    max-width: 300px;
+    margin: 0 auto;
+    max-width: 400px;
 }
