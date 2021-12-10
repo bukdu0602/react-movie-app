@@ -1,13 +1,13 @@
 import React, {useState, useEffect} from "react";
 import { API_TOKEN } from '../globals/globals';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 
 
 
 const PageHome = ({ sort }) => {
     
     const [moviesData, setMoviesData] = useState(null);
-    const [sorting, setSorting] = useState('popular');
+    const navigate = useNavigate();
 
     useEffect(() => {
 
@@ -30,36 +30,25 @@ const PageHome = ({ sort }) => {
 
     function gotClicked(e){
         e.preventDefault();
-        console.log("jiji")
-        const item = e.target.elements.myList.value
-        console.log(item)
-        setSorting(item)
+        const item = e.target.value
+        navigate(item, { replace: true });
     }
 
     return (
         <section className="home-page">
 
-        <form action='/' onSubmit={gotClicked}>
             <label htmlFor="myList">Sort</label>
-            <select id="myList" name="myList">
+            <select id="myList" name="myList" onChange={gotClicked}>
                 <option value="">Select</option>
                 <option value="/sort/popular">Popular</option>
                 <option value="/sort/top-rated">Top Rated</option>
                 <option value="/sort/now-playing">Now Playing</option>
                 <option value="/sort/upcoming">Upcoming</option>
             </select>
-            <button type="submit">submit</button>
-
-        </form>
         
         
         <nav className="nav-sort">
-            <ul>
-                <li>
-                    <NavLink to={sorting}>bbbbbbb</NavLink>
-                </li>
-                
-            </ul>
+          
         </nav>
             {moviesData !== null && 
                 moviesData.map(movie =>
