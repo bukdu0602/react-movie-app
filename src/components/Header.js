@@ -13,13 +13,16 @@ const Header = () => {
             setToggle("none")
         }
     }
+    function mouseOut() {
+        setToggle("none")
+    }
 
     return (
-        <header className={toggle}>
-            <div class="top-bar">
-                <h1><a href="#0">Movie App</a></h1>
-                <a href="#main-nav" className="btn-menu " id="btn-menu" onClick={gotPressed}>Menu</a>
-                <nav id="main-nav">
+        <header className={toggle} onMouseOut={mouseOut}>
+            <div className="top-bar">
+                <h1><a href="/">Movie App</a></h1>
+                <a className="btn-menu " id="btn-menu" onClick={gotPressed}>Menu</a>
+                <nav id="main-nav" >
                     <ul>
                         <li><NavLink to="/">Home</NavLink></li>
                         <li><NavLink to="/favorite">Favorite</NavLink></li>

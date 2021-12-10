@@ -63,16 +63,16 @@ const PageHome = ({ sort }) => {
         </nav>
             {moviesData !== null && 
                 moviesData.map(movie =>
-                    <div className="card">
+                    <div className="card" key={movie.id}>
                         <div className="posterImage">
-                        <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt=" " />
+                        <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}  alt=" " />
                         </div>
                         <div className="movieInfo">
                         <h3>{`Title: ${movie.title}`}</h3>
                         <p>{`Released date: ${movie.release_date}`}</p>
                         <p>{`Rating: ${movie.vote_average}`}</p>
                         <p>{`Overview: ${movie.overview}`}</p>
-                        <NavLink to={`/individual/${movie.title}`}> More Info </NavLink>
+                        <NavLink to={`/individual/${movie.id}`}> More Info </NavLink>
                         </div>
                     </div>
             )}
