@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import { API_TOKEN } from '../globals/globals';
-import { NavLink, useNavigate } from 'react-router-dom';
-
+import { Link, useNavigate } from 'react-router-dom';
+import noPoster from "../images/no-movie-poster.jpg"
 
 
 const PageHome = ({ sort }) => {
@@ -50,21 +50,27 @@ const PageHome = ({ sort }) => {
         <nav className="nav-sort">
           
         </nav>
+        <div className="cards">
             {moviesData !== null && 
-                moviesData.map(movie =>
-                    <div className="card" key={movie.id}>
+                moviesData.map((movie, idForCss) =>
+                    <div className={`card id${idForCss}`} key={movie.id}>
                         <div className="posterImage">
-                        <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}  alt=" " />
+                        {movie.poster_path !== null ?
+                            <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}  alt=" " />:
+                            <img src={noPoster} alt="NoImages"></img>
+                        }
                         </div>
                         <div className="movieInfo">
                         <h3>{`Title: ${movie.title}`}</h3>
                         <p>{`Released date: ${movie.release_date}`}</p>
                         <p>{`Rating: ${movie.vote_average}`}</p>
-                        <p>{`Overview: ${movie.overview}`}</p>
-                        <NavLink to={`/individual/${movie.id}`}> More Info </NavLink>
+                        {movie.overview.length > 80 ? <p>{movie.overview.substring(0, 80)} . . .</p> : <p>{movie.overview}</p>}
+                        <Link to={`/individual/${movie.id}`}> More Info </Link>
                         </div>
                     </div>
+                    
             )}
+        </div>
         </section>
     )
 

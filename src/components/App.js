@@ -8,6 +8,8 @@ import PageIndividual from './PageIndividual'
 import Footer from './Footer'
 
 
+
+
 function App() {
   return (
     <BrowserRouter>

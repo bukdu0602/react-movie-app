@@ -1,12 +1,13 @@
 // Nav
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import React, {useState} from 'react';
 
 const Header = () => {
   
     const [toggle, setToggle] = useState("none")
 
-    function gotPressed() {
+    function gotPressed(e) {
+        e.preventDefault();
         if (toggle !== "show"){
             setToggle("show")
         }else {
@@ -14,20 +15,19 @@ const Header = () => {
         }
     }
     function mouseOut(e) {
-        console.log(e.target)
         setToggle("none");
     }
 
     return (
-        <header className={toggle} onMouseLeave={mouseOut} style={{border: `5px solid red`}}>
+        <header className={toggle} onMouseLeave={mouseOut}>
             <div className="top-bar">
-                <h1><a href="/">Movie App</a></h1>
-                <a href="/#" className="btn-menu " id="btn-menu" onClick={gotPressed}>Menu</a>
+                <h1><Link to="/">Movie App</Link></h1>
+                <a href='/' className="btn-menu " id="btn-menu" onClick={gotPressed}>Menu</a>
                 <nav id="main-nav" >
                     <ul>
-                        <li><NavLink to="/">Home</NavLink></li>
-                        <li><NavLink to="/favorite">Favorite</NavLink></li>
-                        <li><NavLink to="/about">About</NavLink></li>
+                        <li><Link to="/">Home</Link></li>
+                        <li><Link to="/favorite">Favorite</Link></li>
+                        <li><Link to="/about">About</Link></li>
                     </ul>
                 </nav>
             </div>
