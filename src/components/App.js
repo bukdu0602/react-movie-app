@@ -7,10 +7,30 @@ import PageAbout from './PageAbout'
 import PageIndividual from './PageIndividual'
 import Footer from './Footer'
 
-
+import { useDispatch } from "react-redux"
+import { addLike, removeAll } from "../features/storage"
 
 
 function App() {
+  let arrayOfFavorites = []
+  const dispatch = useDispatch();
+// On homepage load, compare data between localstorage and local variable, if different, match it 
+    for(let i=0; i<localStorage.length; i++){
+        arrayOfFavorites.push(JSON.parse(localStorage.getItem(localStorage.key(i))))
+    }
+    console.log(arrayOfFavorites)
+    dispatch(removeAll())
+    
+    arrayOfFavorites.forEach(item => {
+      dispatch(addLike({
+        id: item.id,
+        title: item.title,
+        poster_path: item.poster_path,
+        releaseDate: item.release_date,
+        rating: item.vote_average,
+        overview: item.overview
+  }))
+    })
   return (
     <BrowserRouter>
     <div className="wrapper">

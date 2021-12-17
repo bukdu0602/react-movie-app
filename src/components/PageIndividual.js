@@ -1,6 +1,5 @@
 import { useParams } from 'react-router-dom';
 import React, {useState, useEffect} from "react";
-import { API_TOKEN } from '../globals/globals';
 import { API_KEY } from '../globals/globals'
 // import noMovie from "../images/no-movie-poster.jpg"
 
@@ -15,17 +14,9 @@ const PageIndividual = () => {
     let { id }  = useParams();
     const [moviesData, setMoviesData] = useState(null);
 
-
     useEffect(() => {
         const fetchMovies = async () => {
-            const res = await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=en-US
-            `, {
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json',
-                    'Authorization': 'Bearer ' + API_TOKEN
-                  }
-            });
+            const res = await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=en-US`);
             const moviesData = await res.json();
             setMoviesData(moviesData);
           }
@@ -48,6 +39,8 @@ const PageIndividual = () => {
                     <div className="detail">
                         <div className="posterImageDetail">
                         <img src={`https://image.tmdb.org/t/p/w500/${moviesData.poster_path}`} alt=" " />
+                        
+                        
                         {inCart(moviesData.id) ?
                             <button onClick={() => {
                                 dispatch(removeLike({

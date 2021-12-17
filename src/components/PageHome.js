@@ -33,11 +33,14 @@ const PageHome = ({ sort }) => {
         const item = e.target.value
         navigate(item, { replace: true });
     }
+    function clicked(movieId){
+        navigate(`individual/${movieId}`, { replace: true });
+    }
 
     return (
         <section className="home-page">
-
-            <label htmlFor="myList">Sort</label>
+            <div className="sortMenu">
+            <label htmlFor="myList"></label>
             <select id="myList" name="myList" onChange={gotClicked}>
                 <option value="">Select</option>
                 <option value="/sort/popular">Popular</option>
@@ -45,7 +48,7 @@ const PageHome = ({ sort }) => {
                 <option value="/sort/now-playing">Now Playing</option>
                 <option value="/sort/upcoming">Upcoming</option>
             </select>
-        
+            </div>
         
         <nav className="nav-sort">
           
@@ -53,10 +56,10 @@ const PageHome = ({ sort }) => {
         <div className="cards">
             {moviesData !== null && 
                 moviesData.map((movie, idForCss) =>
-                    <div className={`card id${idForCss}`} key={movie.id}>
-                        <div className="posterImage">
+                    <div className="card" key={movie.id} onClick={() => clicked(movie.id)}>
+                        <div className="posterImage"  >
                         {movie.poster_path !== null ?
-                            <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}  alt=" " />:
+                            <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}  alt="poster" />:
                             <img src={noPoster} alt="NoImages"></img>
                         }
                         </div>

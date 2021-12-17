@@ -16,23 +16,25 @@ img {
 /* page body setting */
 p {
     line-height: 1.2;
-    font-size: 1em;
 }
 body {
-    margin: 0;
+    /* margin: 0; */
     font-family: 'Lato', sans-serif;
     background-color: black;
     color: white;
+    font-family: 'Roboto', sans-serif;
 }
 .wrapper {
-    max-width: 1000px;
+    max-width: 1920px;
     min-height: 100vh;
     background-color: black;
     display: grid;
-    grid-template-rows: auto 1fr auto;
+    /* grid-template-rows: auto 1fr auto; */
     margin: 0 auto;
 }
 
+
+/* Navbar and Sort Menu  */
 .top-bar {
     display: grid;
     grid-template-columns: 3fr 1fr;
@@ -40,7 +42,8 @@ body {
     grid-template-areas: "logo btn"
                          "nav  nav";
     align-items: center;
-    background-color: rgb(0, 0, 0);
+    background-color: rgb(78, 76, 76);
+    border-radius: 8px;
 }
 .top-bar h1 {
     grid-area: logo;
@@ -73,6 +76,7 @@ header a {
     padding: 0;
     list-style: none;
     text-align: center;
+    
 }
 
 .top-bar nav a {
@@ -88,20 +92,41 @@ header a {
     background-color: rgba(255,255,255, 0.3);
 }
 
+.sortMenu{
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 20px;
+    margin: 20px 0 10px 0;
+    
+}
+.sortMenu select{
+    background-color: rgb(66, 66, 66);
+    color: white;
+    border-radius: 7px;
+}
+
+
+
 /* movie cards Home*/
 .card {
     margin: 10px;
-    /* display: flex; */
-    /* justify-content: space-around; */
-    /* max-width: 310px; */
-    
+    border-radius: 8px;
     padding: 30px;
     background-color: rgb(29, 29, 29);
 }
+
 .posterImage {
     max-width: 550px;
     margin: 0 auto;
+    transition: transform .3s;
+    
 }
+.posterImage img {
+    border-radius: 8px;
+}
+.posterImage:hover {
+    transform: scale(1.15); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+  }
 .movieInfo {
     /* min-height: 300px; */
     display: flex;
@@ -146,10 +171,17 @@ header a {
     margin: 20px 0 0 30px;
     width: 80px;
     height: 30px;
-    border-radius: 12px;
+    border-radius: 8px;
     background-color: rgb(201, 147, 156);
     color: rgb(49, 49, 49);
     border: none;
+}
+
+/* Favorite Page */
+
+.noFavMovie{
+    max-width: 700px;
+    margin-top: 100px;
 }
 
 
@@ -158,14 +190,35 @@ header a {
 
 
 
-@media screen and (min-width: 850px){
+@media screen and (min-width: 760px){
     .card {
-        max-width: 400px;
+        max-width: 350px;
     }
     .cards {
         display: flex;
         flex-wrap: wrap;
         justify-content: space-around;
+    }
+    .btn-menu {
+        display: none;
+    }
+    .top-bar nav {
+        display:inline;
+        
+    }
+    .top-bar nav ul {
+        display: flex;
+        justify-content: flex-end;
+
+    }
+    .top-bar nav a{
+        display: flex;
+        align-items: center;
+        padding: 0 20px 0 20px;
+    }
+    .top-bar {
+        display: flex;
+        justify-content: space-between;
     }
 
     }
@@ -173,10 +226,10 @@ header a {
         .card {
             max-width: 310px;
         }
-        .cards {
+        /* .cards {
             display: flex;
             flex-wrap: wrap;
             justify-content: space-around;
-        }
+        } */
         
         }

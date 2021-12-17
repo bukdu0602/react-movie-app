@@ -1,4 +1,4 @@
-// Nav
+
 import { Link } from 'react-router-dom';
 import React, {useState} from 'react';
 
@@ -21,6 +21,7 @@ const Header = () => {
     return (
         <header className={toggle} onMouseLeave={mouseOut}>
             <div className="top-bar">
+
                 <h1><Link to="/">Movie App</Link></h1>
                 <a href='/' className="btn-menu " id="btn-menu" onClick={gotPressed}>Menu</a>
                 <nav id="main-nav" >
