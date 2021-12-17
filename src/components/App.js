@@ -44,6 +44,11 @@ function App() {
               <Route path="/favorite" element={<PageFavorite />} />
               <Route path="/about" element={<PageAbout />} />
               <Route path="/individual/:id" element={<PageIndividual />} />
+              <Route path="/sort/popular/individual/:id" element={<PageIndividual />} />
+              <Route path="/sort/top-rated/individual/:id" element={<PageIndividual />} />
+              <Route path="/sort/now-playing/individual/:id" element={<PageIndividual />} />
+              <Route path="/sort/upcoming/individual/:id" element={<PageIndividual />} />
+              <Route path="/favorite/individual/:id" element={<PageIndividual />} />
             </Routes>
       <Footer />
     </div>
